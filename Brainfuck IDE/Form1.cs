@@ -87,7 +87,7 @@ namespace Brainfuck_IDE
             
             if (bfintr.CodePtr == bfintr.Code.Length)
             {
-
+                timerExeBf.Stop();
             }
 
         }
