@@ -14,6 +14,8 @@ namespace Brainfuck_IDE
     public partial class Form1 : Form
     {
         BfInterpreter bfintr;
+        bool isRunning = false;
+        bool isStarted = false;
 
         public Form1()
         {
@@ -51,23 +53,24 @@ namespace Brainfuck_IDE
         {
             string s = textBoxBfEditor.Text;
             textBoxBfOutput.Text = "";
-            int i = 0;
+            //int i = 0;
             //textBoxBfOutput.Text = s;
             bfintr = new BfInterpreter(s);
-            timerExeBf.Start();
-
+            //timerExeBf.Start();
+            isRunning = true;
+            execBf();
         }
 
         private void textBoxBfInput_TextChanged(object sender, EventArgs e)
         {
             //timerInput.Stop();
-            timerExeBf.Start();
+            //timerExeBf.Start();
+            isRunning = true;
+            execBf();
         }
 
         private void timerExeBf_Tick(object sender, EventArgs e)
         {
-            
-
             if (bfintr.CharAtCP == ',' && textBoxBfInput.Text == "")
             {
                 timerExeBf.Stop();
@@ -89,7 +92,34 @@ namespace Brainfuck_IDE
             {
                 timerExeBf.Stop();
             }
+        }
+        
+        void execBf()
+        {
+            while (bfintr.CodePtr < bfintr.Code.Length)
+            {
+                if (bfintr.CharAtCP == ',' && textBoxBfInput.Text == "")
+                {
+                    isRunning = false;
+                    return;
+                }
+                else if (bfintr.CharAtCP == ',')
+                {
+                    bfintr.Input = textBoxBfInput.Text[0];
+                    textBoxBfInput.Text = textBoxBfInput.Text.Substring(1);
+                }
+                bfintr.InterpretBF();
+                if (bfintr.IsOutput)
+                {
+                    textBoxBfOutput.Text += bfintr.Output;
+                    bfintr.IsOutput = false;
+                } 
+            }
 
+            //if (bfintr.CodePtr == bfintr.Code.Length)
+            //{
+            //    timerExeBf.Stop();
+            //}
         }
 
         private void timerUpdateMemOut_Tick(object sender, EventArgs e)

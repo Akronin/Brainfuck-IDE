@@ -118,7 +118,7 @@ namespace Brainfuck_IDE
             codePtr++;
         }
 
-        void PrintToC()
+        void PrintToCS()
         {
             
         }
