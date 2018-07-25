@@ -54,33 +54,41 @@ namespace Brainfuck_IDE
             int i = 0;
             //textBoxBfOutput.Text = s;
             bfintr = new BfInterpreter(s);
-            while (i < bfintr.Code.Length)
-            {
-                if (bfintr.CharAtCP == ',')
-                {
-                    timerInput.Stop();
-                    bfintr.Input = textBoxBfInput.Text[0];
-                    textBoxBfInput.Text = textBoxBfInput.Text.Substring(1);
-                }
-                bfintr.InterpretBF();
-                if (bfintr.IsOutput)
-                {
-                    textBoxBfOutput.Text += bfintr.Output;
-                    bfintr.IsOutput = false;
-                }
-                i = bfintr.CodePtr;
-            }
+            timerExeBf.Start();
+
         }
 
         private void textBoxBfInput_TextChanged(object sender, EventArgs e)
         {
             //timerInput.Stop();
-            timerInput.Start();
+            timerExeBf.Start();
         }
 
-        private void timerInput_Tick(object sender, EventArgs e)
+        private void timerExeBf_Tick(object sender, EventArgs e)
         {
-            timerInput.Stop();
+            
+
+            if (bfintr.CharAtCP == ',' && textBoxBfInput.Text == "")
+            {
+                timerExeBf.Stop();
+                return;
+            }
+            else if(bfintr.CharAtCP == ',')
+            {
+                bfintr.Input = textBoxBfInput.Text[0];
+                textBoxBfInput.Text = textBoxBfInput.Text.Substring(1);
+            }
+            bfintr.InterpretBF();
+            if (bfintr.IsOutput)
+            {
+                textBoxBfOutput.Text += bfintr.Output;
+                bfintr.IsOutput = false;
+            }
+            
+            if (bfintr.CodePtr == bfintr.Code.Length)
+            {
+
+            }
 
         }
 

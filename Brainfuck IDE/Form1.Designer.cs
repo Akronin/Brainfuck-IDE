@@ -43,7 +43,7 @@
             this.openFileDia = new System.Windows.Forms.OpenFileDialog();
             this.textBoxBfInput = new System.Windows.Forms.TextBox();
             this.timerUpdateMemOut = new System.Windows.Forms.Timer(this.components);
-            this.timerInput = new System.Windows.Forms.Timer(this.components);
+            this.timerExeBf = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,7 +137,7 @@
             // 
             this.debugToolStripMenuItem1.Name = "debugToolStripMenuItem1";
             this.debugToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.debugToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.debugToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
             this.debugToolStripMenuItem1.Text = "Debug";
             this.debugToolStripMenuItem1.Click += new System.EventHandler(this.debugToolStripMenuItem1_Click);
             // 
@@ -154,10 +154,9 @@
             this.timerUpdateMemOut.Enabled = true;
             this.timerUpdateMemOut.Tick += new System.EventHandler(this.timerUpdateMemOut_Tick);
             // 
-            // timerInput
+            // timerExeBf
             // 
-            this.timerInput.Interval = 250;
-            this.timerInput.Tick += new System.EventHandler(this.timerInput_Tick);
+            this.timerExeBf.Tick += new System.EventHandler(this.timerExeBf_Tick);
             // 
             // Form1
             // 
@@ -195,7 +194,7 @@
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugToolStripMenuItem1;
         private System.Windows.Forms.Timer timerUpdateMemOut;
-        private System.Windows.Forms.Timer timerInput;
+        private System.Windows.Forms.Timer timerExeBf;
     }
 }
 
