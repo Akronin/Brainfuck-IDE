@@ -58,6 +58,7 @@ namespace Brainfuck_IDE
             bfintr = new BfInterpreter(s);
             //timerExeBf.Start();
             isRunning = true;
+            isStarted = true;
             execBf();
         }
 
@@ -65,8 +66,11 @@ namespace Brainfuck_IDE
         {
             //timerInput.Stop();
             //timerExeBf.Start();
-            isRunning = true;
-            execBf();
+            if (isStarted)
+            {
+                isRunning = true;
+                execBf(); 
+            }
         }
 
         private void timerExeBf_Tick(object sender, EventArgs e)
@@ -138,7 +142,6 @@ namespace Brainfuck_IDE
                 }
             }
             textBoxBfMem.Text = s;
-        }
-
+        }     
     }
 }
