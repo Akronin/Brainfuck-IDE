@@ -119,7 +119,7 @@ namespace Brainfuck_IDE
                     bfintr.IsOutput = false;
                 } 
             }
-
+            isStarted = false;
             //if (bfintr.CodePtr == bfintr.Code.Length)
             //{
             //    timerExeBf.Stop();
@@ -142,6 +142,11 @@ namespace Brainfuck_IDE
                 }
             }
             textBoxBfMem.Text = s;
-        }     
+        }
+
+        //private void Form1_Load(object sender, EventArgs e)
+        //{
+
+        //}
     }
 }

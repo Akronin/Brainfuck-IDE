@@ -48,6 +48,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.splitter1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,19 +68,19 @@
             this.textBoxBfEditor.Multiline = true;
             this.textBoxBfEditor.Name = "textBoxBfEditor";
             this.textBoxBfEditor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBfEditor.Size = new System.Drawing.Size(573, 254);
+            this.textBoxBfEditor.Size = new System.Drawing.Size(564, 254);
             this.textBoxBfEditor.TabIndex = 0;
             // 
             // textBoxBfMem
             // 
             this.textBoxBfMem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBfMem.Location = new System.Drawing.Point(591, 43);
+            this.textBoxBfMem.Location = new System.Drawing.Point(591, 112);
             this.textBoxBfMem.Multiline = true;
             this.textBoxBfMem.Name = "textBoxBfMem";
             this.textBoxBfMem.ReadOnly = true;
             this.textBoxBfMem.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBfMem.Size = new System.Drawing.Size(131, 407);
+            this.textBoxBfMem.Size = new System.Drawing.Size(131, 338);
             this.textBoxBfMem.TabIndex = 1;
             // 
             // textBoxBfOutput
@@ -89,7 +92,7 @@
             this.textBoxBfOutput.Name = "textBoxBfOutput";
             this.textBoxBfOutput.ReadOnly = true;
             this.textBoxBfOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBfOutput.Size = new System.Drawing.Size(573, 75);
+            this.textBoxBfOutput.Size = new System.Drawing.Size(564, 75);
             this.textBoxBfOutput.TabIndex = 2;
             // 
             // menuStrip1
@@ -159,7 +162,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBfInput.Location = new System.Drawing.Point(15, 430);
             this.textBoxBfInput.Name = "textBoxBfInput";
-            this.textBoxBfInput.Size = new System.Drawing.Size(570, 20);
+            this.textBoxBfInput.Size = new System.Drawing.Size(561, 20);
             this.textBoxBfInput.TabIndex = 4;
             this.textBoxBfInput.TextChanged += new System.EventHandler(this.textBoxBfInput_TextChanged);
             // 
@@ -212,11 +215,38 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Input:";
             // 
+            // splitter1
+            // 
+            this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitter1.Location = new System.Drawing.Point(582, 30);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(2, 420);
+            this.splitter1.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label5.Location = new System.Drawing.Point(12, 300);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(572, 3);
+            this.label5.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label6.Location = new System.Drawing.Point(12, 408);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(572, 3);
+            this.label6.TabIndex = 11;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 462);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.splitter1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -230,6 +260,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 350);
             this.Name = "Form1";
             this.Text = "Brainfuck IDE";
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -258,6 +289,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label splitter1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
