@@ -69,7 +69,7 @@ namespace Brainfuck_IDE
             if (isStarted)
             {
                 isRunning = true;
-                execBf(); 
+                execBf();
             }
         }
 
@@ -80,7 +80,7 @@ namespace Brainfuck_IDE
                 timerExeBf.Stop();
                 return;
             }
-            else if(bfintr.CharAtCP == ',')
+            else if (bfintr.CharAtCP == ',')
             {
                 bfintr.Input = textBoxBfInput.Text[0];
                 textBoxBfInput.Text = textBoxBfInput.Text.Substring(1);
@@ -91,13 +91,13 @@ namespace Brainfuck_IDE
                 textBoxBfOutput.Text += bfintr.Output;
                 bfintr.IsOutput = false;
             }
-            
+
             if (bfintr.CodePtr == bfintr.Code.Length)
             {
                 timerExeBf.Stop();
             }
         }
-        
+
         void execBf()
         {
             while (bfintr.CodePtr < bfintr.Code.Length)
@@ -117,7 +117,7 @@ namespace Brainfuck_IDE
                 {
                     textBoxBfOutput.Text += bfintr.Output;
                     bfintr.IsOutput = false;
-                } 
+                }
             }
             isStarted = false;
             //if (bfintr.CodePtr == bfintr.Code.Length)
@@ -129,8 +129,28 @@ namespace Brainfuck_IDE
         private void timerUpdateMemOut_Tick(object sender, EventArgs e)
         {
             string s = "";
+            int begin;
+            int end;
+
+            if (textBoxMemBegin.Text == "")
+            {
+                begin = 0;
+            }            
+            else
+            {
+                begin = Convert.ToInt32(textBoxMemBegin.Text); 
+            }
+            if (textBoxMemElements.Text == "")
+            {
+                end = begin + 20;
+            }
+            else
+            {
+                end = begin + Convert.ToInt32(textBoxMemElements.Text); 
+            }
+
             textBoxBfMem.Clear();
-            for (int i = 0; i < 20; i++)
+            for (int i = begin; i < end; i++)
             {
                 if (bfintr != null)
                 {
