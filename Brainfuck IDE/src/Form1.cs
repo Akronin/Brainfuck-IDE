@@ -16,6 +16,8 @@ namespace Brainfuck_IDE
         BfInterpreter bfintr;
         bool isRunning = false;
         bool isStarted = false;
+        string filename;
+        string path;
 
         public Form1()
         {
@@ -36,6 +38,9 @@ namespace Brainfuck_IDE
                 textBoxBfEditor.Text = sr.ReadToEnd();
                 sr.Close();
             }
+            path = openFileDia.FileName;
+            filename = path.Substring(path.LastIndexOf('\\') + 1);
+            Form1.ActiveForm.Text = "Brainfuck IDE - " + filename;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,6 +52,9 @@ namespace Brainfuck_IDE
                 sw.Write(textBoxBfEditor.Text);
                 sw.Close();
             }
+            path = saveFileDia.FileName;
+            filename = path.Substring(path.LastIndexOf('\\') + 1);
+            Form1.ActiveForm.Text = "Brainfuck IDE - " + filename;
         }
 
         private void debugToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -98,7 +106,7 @@ namespace Brainfuck_IDE
             }
         }
 
-        void execBf()
+        private void execBf()
         {
             while (bfintr.CodePtr < bfintr.Code.Length)
             {

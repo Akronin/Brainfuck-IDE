@@ -118,10 +118,9 @@ namespace Brainfuck_IDE
             codePtr++;
         }
 
-        void PrintToCS()
+        void PrintToCS(string filename)
         {
             
         }
-
     }
 }
