@@ -67,7 +67,7 @@ namespace Brainfuck_IDE
             //timerExeBf.Start();
             isRunning = true;
             isStarted = true;
-            execBf();
+            ExecBf();
         }
 
         private void textBoxBfInput_TextChanged(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace Brainfuck_IDE
             if (isStarted)
             {
                 isRunning = true;
-                execBf();
+                ExecBf();
             }
         }
 
@@ -106,7 +106,7 @@ namespace Brainfuck_IDE
             }
         }
 
-        private void execBf()
+        private void ExecBf()
         {
             while (bfintr.CodePtr < bfintr.Code.Length)
             {
@@ -121,6 +121,11 @@ namespace Brainfuck_IDE
                     textBoxBfInput.Text = textBoxBfInput.Text.Substring(1);
                 }
                 bfintr.InterpretBF();
+                if (bfintr.IsMemChanged)
+                {
+                    UpdateMemView();
+                    bfintr.IsMemChanged = false;
+                }
                 if (bfintr.IsOutput)
                 {
                     textBoxBfOutput.Text += bfintr.Output;
@@ -134,7 +139,7 @@ namespace Brainfuck_IDE
             //}
         }
 
-        private void timerUpdateMemOut_Tick(object sender, EventArgs e)
+        private void UpdateMemView()
         {
             string s = "";
             int begin;
@@ -143,10 +148,10 @@ namespace Brainfuck_IDE
             if (textBoxMemBegin.Text == "")
             {
                 begin = 0;
-            }            
+            }
             else
             {
-                begin = Convert.ToInt32(textBoxMemBegin.Text); 
+                begin = Convert.ToInt32(textBoxMemBegin.Text);
             }
             if (textBoxMemElements.Text == "")
             {
@@ -154,7 +159,7 @@ namespace Brainfuck_IDE
             }
             else
             {
-                end = begin + Convert.ToInt32(textBoxMemElements.Text); 
+                end = begin + Convert.ToInt32(textBoxMemElements.Text);
             }
 
             textBoxBfMem.Clear();
@@ -170,6 +175,21 @@ namespace Brainfuck_IDE
                 }
             }
             textBoxBfMem.Text = s;
+        }
+
+        private void timerUpdateMemOut_Tick(object sender, EventArgs e)
+        {
+            UpdateMemView();
+        }
+
+        private void textBoxMemBegin_TextChanged(object sender, EventArgs e)
+        {
+            UpdateMemView();
+        }
+
+        private void textBoxMemElements_TextChanged(object sender, EventArgs e)
+        {
+            UpdateMemView();
         }
 
         //private void Form1_Load(object sender, EventArgs e)

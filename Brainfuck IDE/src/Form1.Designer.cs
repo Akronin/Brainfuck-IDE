@@ -172,7 +172,6 @@
             // 
             // timerUpdateMemOut
             // 
-            this.timerUpdateMemOut.Enabled = true;
             this.timerUpdateMemOut.Tick += new System.EventHandler(this.timerUpdateMemOut_Tick);
             // 
             // timerExeBf
@@ -249,6 +248,7 @@
             this.textBoxMemBegin.Name = "textBoxMemBegin";
             this.textBoxMemBegin.Size = new System.Drawing.Size(73, 20);
             this.textBoxMemBegin.TabIndex = 12;
+            this.textBoxMemBegin.TextChanged += new System.EventHandler(this.textBoxMemBegin_TextChanged);
             // 
             // textBoxMemElements
             // 
@@ -256,6 +256,7 @@
             this.textBoxMemElements.Name = "textBoxMemElements";
             this.textBoxMemElements.Size = new System.Drawing.Size(73, 20);
             this.textBoxMemElements.TabIndex = 13;
+            this.textBoxMemElements.TextChanged += new System.EventHandler(this.textBoxMemElements_TextChanged);
             // 
             // label7
             // 

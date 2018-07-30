@@ -18,6 +18,7 @@ namespace Brainfuck_IDE
         private readonly int memSize = 30000;
         //private bool isInput = false;
         private bool isOutput = false;
+        private bool isMemChanged = false;
 
         public BfInterpreter() { }
 
@@ -44,6 +45,8 @@ namespace Brainfuck_IDE
         public char Output { get => output; }
         public char CharAtCP { get => Code[codePtr]; }
         public bool IsOutput { get => isOutput; set => isOutput = value; }
+        public bool IsMemChanged { get => isMemChanged; set => isMemChanged = value; }
+
 
         public void InterpretBF()
         {
@@ -51,9 +54,11 @@ namespace Brainfuck_IDE
             {
                 case '+':
                     memory[memPtr]++;
+                    isMemChanged = true;
                     break;
                 case '-':
                     memory[memPtr]--;
+                    isMemChanged = true;
                     break;
                 case '>':
                     memPtr++;
