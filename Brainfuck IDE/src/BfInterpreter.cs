@@ -80,6 +80,7 @@ namespace Brainfuck_IDE
                     break;
                 case ',':
                     memory[memPtr] = (byte)input;
+                    isMemChanged = true;
                     //isInput = true;
                     break;
                 case '[':

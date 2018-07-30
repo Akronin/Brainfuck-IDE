@@ -167,9 +167,9 @@ namespace Brainfuck_IDE
             {
                 if (bfintr != null)
                 {
-                    s += string.Format("Mem[{0}] = {1}", i, bfintr.Memory[i]);
+                    s += string.Format("Mem[{0,3}] = {1,3} | 0x{1,2:X2}", i, bfintr.Memory[i]);
                     if (bfintr.Memory[i] != 0)
-                        s += ", " + (char)bfintr.Memory[i] + "\r\n";
+                        s += " | " + (char)bfintr.Memory[i] + "\r\n";
                     else
                         s += "\r\n";
                 }
@@ -190,6 +190,11 @@ namespace Brainfuck_IDE
         private void textBoxMemElements_TextChanged(object sender, EventArgs e)
         {
             UpdateMemView();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
 
         //private void Form1_Load(object sender, EventArgs e)
