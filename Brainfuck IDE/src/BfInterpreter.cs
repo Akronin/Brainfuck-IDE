@@ -126,7 +126,8 @@ namespace Brainfuck_IDE
 
         void PrintToCS(string filename)
         {
-            
+            string begin = "";
+                
         }
     }
 }

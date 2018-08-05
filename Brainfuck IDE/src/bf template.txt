@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace {0}
+{
+    static class Program
+    {        
+        static void Main()
+        {
+            {1}
+        }
+    }
+}
