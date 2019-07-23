@@ -12,17 +12,32 @@ namespace Brainfuck_IDE.src
         private string BFCode = null;
         private string translatedCode = null;
         private string filename = null;
-        private string addatCP = "memory[memptr]++;\n";
-        private string subatCP = "memory[memptr]--;\n";
-        private string incMemPtr = "memptr++;\n";
-        private string decMemPtr = "memptr--;\n";
-        private string outputatCP = "Console.Write(memory[memptr]);\n";
-        private string inputatCP = "memory[memptr] = Console.Read();\n";
-        private string loopBeginatCP = "while( memory[memptr] != 0 ){\n";
-        private string loopEndatCP = "}\n";
+        private string addatCP          = "\t\t\tmemory[memptr]++;\n";
+        private string subatCP          = "\t\t\tmemory[memptr]--;\n";
+        private string incMemPtr        = "\t\t\tmemptr++;\n";
+        private string decMemPtr        = "\t\t\tmemptr--;\n";
+        private string outputatCP       = "\t\t\tConsole.Write((char)memory[memptr]);\n";
+        private string inputatCP        = "\t\t\tmemory[memptr] = Console.Read();\n";
+        private string loopBeginatCP    = "\t\t\twhile( memory[memptr] != 0 ){\n";
+        private string loopEndatCP      = "\t\t\t}\n";
+
+        private string boilerCode = "using System;\n"
+            + "namespace {0}\n"
+            + "{{\n"
+            + "\tstatic class Program\n"
+            + "\t{{\n"
+            + "\t\tstatic void Main()\n"
+            + "\t\t{{\n"
+            + "\t\t\tbyte[] memory = new byte[50000];\n"
+            + "\t\t\tint memptr = 0;\n"
+            + "{1}\n"
+            + "\t\t\tConsole.ReadKey();\n"
+            + "\t\t}}\n"
+            + "\t}}\n"
+            + "}}\n";
 
         //private int memptr = 0;
-
+        private int indentCount = 0;
         public BFCompile()
         {
 
@@ -35,33 +50,38 @@ namespace Brainfuck_IDE.src
 
         public string translateToCS()
         {
-            foreach (char item in BFCode)
+            string indentStr = new string('\t', indentCount);
+            foreach (char subCode in BFCode)
             {
-                switch (item)
+                switch (subCode)
                 {
                     case '+':
-                        translatedCode += addatCP;
+                        translatedCode += indentStr + addatCP;
                         break;
                     case '-':
-                        translatedCode += subatCP;
+                        translatedCode += indentStr + subatCP;
                         break;
                     case '<':
-                        translatedCode += decMemPtr;
+                        translatedCode += indentStr + decMemPtr;
                         break;
                     case '>':
-                        translatedCode += incMemPtr;
+                        translatedCode += indentStr + incMemPtr;
                         break;
                     case '[':
-                        translatedCode += loopBeginatCP;
+                        translatedCode += indentStr + loopBeginatCP;
+                        indentCount++;
+                        indentStr = new string('\t', indentCount);
                         break;
                     case ']':
-                        translatedCode += loopEndatCP;
+                        indentCount--;
+                        indentStr = new string('\t', indentCount);
+                        translatedCode += indentStr + loopEndatCP;
                         break;
                     case '.':
-                        translatedCode += outputatCP;
+                        translatedCode += indentStr + outputatCP;
                         break;
                     case ',':
-                        translatedCode += inputatCP;
+                        translatedCode += indentStr + inputatCP;
                         break;
                     default:
                         break;
@@ -73,10 +93,11 @@ namespace Brainfuck_IDE.src
 
         public void Savecodetofile()
         {
-            string s = translateToCS();
+            string CSCode = translateToCS();
+            string code = string.Format(boilerCode, filename.Replace(' ', '_').Substring(0, filename.IndexOf('.')), CSCode);
             using (StreamWriter sw = new StreamWriter("E:\\" + filename + ".cs"))
             {
-                sw.WriteLine(s);
+                sw.WriteLine(code);
             }
         }
     }
