@@ -161,6 +161,14 @@ namespace Brainfuck_IDE
             {
                 end = begin + Convert.ToInt32(textBoxMemElements.Text);
             }
+            if (begin > bfintr.MemSize)
+            {
+                begin = 0;
+            }
+            if (end > 100)
+            {
+                end = 100;
+            }
 
             textBoxBfMem.Clear();
             for (int i = begin; i < end; i++)
@@ -201,5 +209,6 @@ namespace Brainfuck_IDE
         //{
 
         //}
+
     }
 }

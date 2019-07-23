@@ -46,6 +46,7 @@ namespace Brainfuck_IDE
         public char CharAtCP { get => Code[codePtr]; }
         public bool IsOutput { get => isOutput; set => isOutput = value; }
         public bool IsMemChanged { get => isMemChanged; set => isMemChanged = value; }
+        public int MemSize => memSize;
 
 
         public void InterpretBF()
