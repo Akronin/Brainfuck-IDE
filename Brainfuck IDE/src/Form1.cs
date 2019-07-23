@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Brainfuck_IDE.src;
 
 namespace Brainfuck_IDE
 {
     public partial class Form1 : Form
     {
         BfInterpreter bfintr;
+
         bool isRunning = false;
         bool isStarted = false;
         string filename;
@@ -142,8 +144,8 @@ namespace Brainfuck_IDE
         private void UpdateMemView()
         {
             string s = "";
-            int begin;
-            int end;
+            int begin = 0;
+            int end = 20;
 
             if (textBoxMemBegin.Text == "")
             {
@@ -151,7 +153,14 @@ namespace Brainfuck_IDE
             }
             else
             {
-                begin = Convert.ToInt32(textBoxMemBegin.Text);
+                try
+                {
+                    begin = Convert.ToInt32(textBoxMemBegin.Text);
+                }
+                catch (FormatException r)
+                {
+                    MessageBox.Show(r.Message, "Error !!!");
+                }
             }
             if (textBoxMemElements.Text == "")
             {
@@ -159,15 +168,23 @@ namespace Brainfuck_IDE
             }
             else
             {
-                end = begin + Convert.ToInt32(textBoxMemElements.Text);
+                try
+                {
+                    end = begin + Convert.ToInt32(textBoxMemElements.Text);
+                }
+                catch (FormatException r)
+                {
+                    MessageBox.Show(r.Message, "Error !!!");
+                }
             }
             if (begin > bfintr.MemSize)
             {
                 begin = 0;
             }
-            if (end > 100)
+            if ((end - begin) > 100)
             {
-                end = 100;
+                end = begin + 100;
+                textBoxMemElements.Text = 100.ToString();
             }
 
             textBoxBfMem.Clear();
@@ -198,6 +215,14 @@ namespace Brainfuck_IDE
         private void textBoxMemElements_TextChanged(object sender, EventArgs e)
         {
             UpdateMemView();
+        }
+
+        private void compileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string s = textBoxBfEditor.Text;
+            BFCompile bfc = new BFCompile(s, filename);
+            bfc.Savecodetofile();
+            //textBoxBfOutput.Text = bfc.translateToCS();
         }
 
         //private void label8_Click(object sender, EventArgs e)

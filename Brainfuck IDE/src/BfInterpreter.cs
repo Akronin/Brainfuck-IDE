@@ -37,11 +37,11 @@ namespace Brainfuck_IDE
             this.codePtr = pointerToCode;
         }
 
-        public byte[] Memory { get => memory; set { memory = value; } }
-        public int MemPtr { get => memPtr; set { memPtr = value; } }
-        public string Code { get => code; set { code = value; } }
-        public int CodePtr { get => codePtr; set { codePtr = value; } }
-        public char Input { set { input = value; } }
+        public byte[] Memory { get => memory; set => memory = value; }
+        public int MemPtr { get => memPtr; set => memPtr = value; }
+        public string Code { get => code; set => code = value; }
+        public int CodePtr { get => codePtr; set => codePtr = value; }
+        public char Input { set => input = value; }
         public char Output { get => output; }
         public char CharAtCP { get => Code[codePtr]; }
         public bool IsOutput { get => isOutput; set => isOutput = value; }
@@ -125,10 +125,6 @@ namespace Brainfuck_IDE
             codePtr++;
         }
 
-        void PrintToCS(string filename)
-        {
-            string begin = "";
-                
-        }
+       
     }
 }

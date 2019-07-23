@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\BFCompile.cs" />
     <Compile Include="src\BfInterpreter.cs" />
     <Compile Include="src\Form1.cs">
       <SubType>Form</SubType>

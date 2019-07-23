@@ -55,6 +55,9 @@
             this.textBoxMemElements = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.compileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +75,7 @@
             this.textBoxBfEditor.Multiline = true;
             this.textBoxBfEditor.Name = "textBoxBfEditor";
             this.textBoxBfEditor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBfEditor.Size = new System.Drawing.Size(553, 276);
+            this.textBoxBfEditor.Size = new System.Drawing.Size(558, 276);
             this.textBoxBfEditor.TabIndex = 0;
             // 
             // textBoxBfMem
@@ -80,7 +83,7 @@
             this.textBoxBfMem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBfMem.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBfMem.Location = new System.Drawing.Point(580, 104);
+            this.textBoxBfMem.Location = new System.Drawing.Point(585, 104);
             this.textBoxBfMem.Multiline = true;
             this.textBoxBfMem.Name = "textBoxBfMem";
             this.textBoxBfMem.ReadOnly = true;
@@ -98,7 +101,7 @@
             this.textBoxBfOutput.Name = "textBoxBfOutput";
             this.textBoxBfOutput.ReadOnly = true;
             this.textBoxBfOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxBfOutput.Size = new System.Drawing.Size(553, 75);
+            this.textBoxBfOutput.Size = new System.Drawing.Size(558, 75);
             this.textBoxBfOutput.TabIndex = 2;
             // 
             // menuStrip1
@@ -108,7 +111,7 @@
             this.debugToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(781, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(786, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -149,7 +152,8 @@
             // debugToolStripMenuItem
             // 
             this.debugToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.debugToolStripMenuItem1});
+            this.debugToolStripMenuItem1,
+            this.compileToolStripMenuItem});
             this.debugToolStripMenuItem.Name = "debugToolStripMenuItem";
             this.debugToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.debugToolStripMenuItem.Text = "Debug";
@@ -158,7 +162,7 @@
             // 
             this.debugToolStripMenuItem1.Name = "debugToolStripMenuItem1";
             this.debugToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.debugToolStripMenuItem1.Size = new System.Drawing.Size(128, 22);
+            this.debugToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.debugToolStripMenuItem1.Text = "Debug";
             this.debugToolStripMenuItem1.Click += new System.EventHandler(this.debugToolStripMenuItem1_Click);
             // 
@@ -169,7 +173,7 @@
             this.textBoxBfInput.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxBfInput.Location = new System.Drawing.Point(15, 452);
             this.textBoxBfInput.Name = "textBoxBfInput";
-            this.textBoxBfInput.Size = new System.Drawing.Size(550, 20);
+            this.textBoxBfInput.Size = new System.Drawing.Size(555, 20);
             this.textBoxBfInput.TabIndex = 4;
             this.textBoxBfInput.TextChanged += new System.EventHandler(this.textBoxBfInput_TextChanged);
             // 
@@ -205,11 +209,11 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(577, 27);
+            this.label3.Location = new System.Drawing.Point(582, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
+            this.label3.Size = new System.Drawing.Size(142, 13);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Memory";
+            this.label3.Text = "Memory - max. 100 Elements";
             // 
             // label4
             // 
@@ -226,7 +230,7 @@
             this.splitter1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitter1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.splitter1.Location = new System.Drawing.Point(571, 30);
+            this.splitter1.Location = new System.Drawing.Point(576, 30);
             this.splitter1.Name = "splitter1";
             this.splitter1.Size = new System.Drawing.Size(3, 442);
             this.splitter1.TabIndex = 9;
@@ -238,7 +242,7 @@
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label5.Location = new System.Drawing.Point(12, 322);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(561, 3);
+            this.label5.Size = new System.Drawing.Size(566, 3);
             this.label5.TabIndex = 10;
             // 
             // label6
@@ -248,24 +252,24 @@
             this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label6.Location = new System.Drawing.Point(12, 430);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(561, 3);
+            this.label6.Size = new System.Drawing.Size(566, 3);
             this.label6.TabIndex = 11;
             // 
             // textBoxMemBegin
             // 
             this.textBoxMemBegin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMemBegin.Location = new System.Drawing.Point(646, 52);
+            this.textBoxMemBegin.Location = new System.Drawing.Point(651, 52);
             this.textBoxMemBegin.Name = "textBoxMemBegin";
-            this.textBoxMemBegin.Size = new System.Drawing.Size(123, 20);
+            this.textBoxMemBegin.Size = new System.Drawing.Size(60, 20);
             this.textBoxMemBegin.TabIndex = 12;
             this.textBoxMemBegin.TextChanged += new System.EventHandler(this.textBoxMemBegin_TextChanged);
             // 
             // textBoxMemElements
             // 
             this.textBoxMemElements.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxMemElements.Location = new System.Drawing.Point(646, 78);
+            this.textBoxMemElements.Location = new System.Drawing.Point(651, 78);
             this.textBoxMemElements.Name = "textBoxMemElements";
-            this.textBoxMemElements.Size = new System.Drawing.Size(123, 20);
+            this.textBoxMemElements.Size = new System.Drawing.Size(60, 20);
             this.textBoxMemElements.TabIndex = 13;
             this.textBoxMemElements.TextChanged += new System.EventHandler(this.textBoxMemElements_TextChanged);
             // 
@@ -273,7 +277,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(580, 55);
+            this.label7.Location = new System.Drawing.Point(585, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 14;
@@ -283,18 +287,44 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(580, 81);
+            this.label8.Location = new System.Drawing.Point(585, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 13);
             this.label8.TabIndex = 15;
             this.label8.Text = "Elements:";
-            //this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(717, 55);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(53, 13);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Default: 0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(717, 81);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Default: 20";
+            // 
+            // compileToolStripMenuItem
+            // 
+            this.compileToolStripMenuItem.Name = "compileToolStripMenuItem";
+            this.compileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.compileToolStripMenuItem.Text = "Compile";
+            this.compileToolStripMenuItem.Click += new System.EventHandler(this.compileToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(781, 484);
+            this.ClientSize = new System.Drawing.Size(786, 484);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxMemElements);
@@ -350,6 +380,9 @@
         private System.Windows.Forms.TextBox textBoxMemElements;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripMenuItem compileToolStripMenuItem;
     }
 }
 
