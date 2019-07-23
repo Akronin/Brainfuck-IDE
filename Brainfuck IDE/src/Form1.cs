@@ -143,7 +143,7 @@ namespace Brainfuck_IDE
 
         private void UpdateMemView()
         {
-            string s = "";
+            string memoryView = "";
             int begin = 0;
             int end = 20;
 
@@ -192,14 +192,14 @@ namespace Brainfuck_IDE
             {
                 if (bfintr != null)
                 {
-                    s += string.Format("Mem[{0,3}] = {1,3} | 0x{1,2:X2}", i, bfintr.Memory[i]);
+                    memoryView += string.Format("Mem[{0,3}] = {1,3} | 0x{1,2:X2} | ", i, bfintr.Memory[i]);
                     if (bfintr.Memory[i] != 0)
-                        s += " | " + (char)bfintr.Memory[i] + "\r\n";
+                        memoryView += (char)bfintr.Memory[i] + "\r\n";
                     else
-                        s += "\r\n";
+                        memoryView += "\r\n";
                 }
             }
-            textBoxBfMem.Text = s;
+            textBoxBfMem.Text = memoryView;
         }
 
         private void timerUpdateMemOut_Tick(object sender, EventArgs e)
@@ -219,8 +219,8 @@ namespace Brainfuck_IDE
 
         private void compileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string s = textBoxBfEditor.Text;
-            BFCompile bfc = new BFCompile(s, filename);
+            string Code = textBoxBfEditor.Text;
+            BFCompile bfc = new BFCompile(Code, filename);
             bfc.Savecodetofile();
             //textBoxBfOutput.Text = bfc.translateToCS();
         }
