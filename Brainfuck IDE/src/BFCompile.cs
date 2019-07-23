@@ -95,7 +95,7 @@ namespace Brainfuck_IDE.src
         {
             string CSCode = translateToCS();
             string code = string.Format(boilerCode, filename.Replace(' ', '_').Substring(0, filename.IndexOf('.')), CSCode);
-            using (StreamWriter sw = new StreamWriter("E:\\" + filename + ".cs"))
+            using (StreamWriter sw = new StreamWriter("E:\\" + filename.Replace(' ', '_').Substring(0, filename.IndexOf('.')) + ".cs"))
             {
                 sw.WriteLine(code);
             }
