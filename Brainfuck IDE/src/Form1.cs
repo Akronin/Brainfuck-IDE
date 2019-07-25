@@ -225,6 +225,11 @@ namespace Brainfuck_IDE
             //textBoxBfOutput.Text = bfc.translateToCS();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
         //private void label8_Click(object sender, EventArgs e)
         //{
 
